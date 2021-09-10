@@ -1,8 +1,12 @@
 <nav class="p-4 pb-5 flex justify-between w-full fixed z-50 top-0 bg-white border-b border-gray-300">
   <%# left side %>
   <div class="flex items-end space-x-10">
-    <h1 class="text-4xl font-semibold px-10 text-gray-900">TheVasePlace</h1>
-    <h1 class="text-gray-800 text-sm uppercase border-b border-gray-600">Shop</h1>
+    <%= link_to root_path do %>
+      <h1 class="text-4xl font-semibold px-10 text-gray-900 -mb-1"><span class="text-xl"><i>The</i></span>VaseLibrary.</h1>
+    <% end %>
+    <%= link_to browse_path do %>
+      <h1 class="text-gray-800 text-sm uppercase border-b border-gray-600">Browse</h1>
+    <% end %>
     <h1 class="text-gray-500 text-sm uppercase">About</h1>
     <h1 class="text-gray-500 text-sm uppercase">Policy</h1>
     <div class="bg-gray-100 pb-2 pt-3 pl-5 pr-16 -mb-1 text-xs text-gray-400 rounded flex space-x-5 items-start">
@@ -13,7 +17,18 @@
 
   <%# right side %>
   <div class="flex items-end space-x-10 pr-10">
-    <i class="far fa-heart text-gray-800"></i>
-    <i class="fas fa-shopping-basket"></i>
+    <i class="far fa-heart text-gray-800 relative" id="navbarLikeButton">
+      <div class="py-5 bg-white w-80 shadow rounded absolute -right-5 top-10 hidden px-5" id="likedList">
+        <p class="text-gray-500 text-sm text-center mt-5">View Wishlist</p>
+      </div>
+    </i>
+    <%= link_to root_path do %>
+      <i class="fas fa-shopping-basket"></i>
+    <% end %>
+    <%= link_to new_user_session_path do %>
+      <i class="far fa-user relative" id="signIn"></i>
+    <% end %>
   </div>
 </nav>
+
+<div class="h-16"></div>

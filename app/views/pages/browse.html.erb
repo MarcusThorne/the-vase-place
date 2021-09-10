@@ -1,0 +1,15 @@
+<div class="grid grid-cols-4 mt-20">
+  <% @products.each do |product| %>
+    <div class="mx-5 relative w-max mx-auto my-10">
+      <%= image_tag("#{product.image}", class: "w-80 h-80 object-contain") %>
+      <div class="flex justify-between w-80">
+        <h1><%= product.name %></h1>
+        <p><%= product.price %></p>
+      </div>
+      <p class="text-xs text-gray-400"><%= product.description %></p>
+      <i class="far fa-heart top-0 right-0 absolute cursor-pointer" id="heart"></i>
+    </div>
+  <% end %>
+</div>
+
+<p class="px-5 py-2 rounded-3xl border border-gray-500 text-gray-700 text-sm w-max mx-auto mb-20 mt-14 hover:bg-black hover:text-white">View more</p>

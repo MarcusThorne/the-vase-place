@@ -1,0 +1,16 @@
+#backToTop {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  display: block;
+  padding: 0.8rem 1rem;
+  cursor: pointer;
+  transform: translateY(100px);
+  opacity: 0;
+  transition: transform 0.5s, opacity 0.3s;
+
+  &.active {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

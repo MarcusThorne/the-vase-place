@@ -1,5 +1,5 @@
 <div class="relative">
-  <%= image_tag("vases.jpg", class: "w-full object-cover h-screen") %>
+  <%= image_tag("vases.jpg", class: "w-full object-cover", style:"height: 85vh;") %>
 
   <div class="absolute top-1/2 left-1/2" style="transform: translate(-50%, -50%);">
     <h1 class="text-white text-center uppercase -mb-8" style="font-size: 8rem;">Free</h1>
@@ -8,34 +8,33 @@
   </div>
 </div>
 
-<div class="grid grid-col grid-cols-3 py-10 mx-auto w-full">
-  <div class="mx-auto relative">
-    <%= image_tag("body-vase (4).jpg", class: "w-96") %>
-    <div class="w-96 flex justify-between">
-      <h1>Body Statue</h1>
-      <p>£15</p>
-    </div>
-    <p class="text-xs text-gray-400">Decorative create flower arrangement vase</p>
-    <i class="far fa-heart absolute top-0 right-0 cursor-pointer" id="heart"></i>
+<div class="flex justify-between mx-20 mt-20 mb-10">
+  <h1 class="text-3xl">Our Favourite Products</h1>
+  <div class="space-x-4">
+    <i class="fas fa-chevron-left bg-gray-100 text-gray-600 hover:text-gray-900 rounded-3xl p-3 px-4 previous_slide"></i>
+    <i class="fas fa-chevron-right bg-gray-100 text-gray-600 hover:text-gray-900 rounded-3xl p-3 px-4 next_slide"></i>
   </div>
+</div>
+<div class="flex" id="carousel">
+  <% @products.each do |product| %>
+    <div class="mx-5 relative">
+      <%= image_tag("#{product.image}", class: "w-80 h-80 object-contain") %>
+      <div class="flex justify-between w-80">
+        <h1><%= product.name %></h1>
+        <p><%= product.price %></p>
+      </div>
+      <p class="text-xs text-gray-400"><%= product.description %></p>
+      <i class="far fa-heart top-0 right-0 absolute cursor-pointer" id="heart"></i>
+    </div>
+  <% end %>
+</div>
 
-  <div  class="mx-auto relative">
-    <%= image_tag("cat-vase (5).jpg", class: "w-96") %>
-    <div class="w-96 flex justify-between">
-      <h1>Creature Pot</h1>
-      <p>£15</p>
-    </div>
-    <p class="text-xs text-gray-400">Decorative create flower arrangement vase</p>
-    <i class="far fa-heart absolute top-0 right-0"></i>
+<div class="flex w-full mt-40">
+  <div class="w-96 border-t border-gray-200 mx-10 py-10">
+    <p class="text-3xl font-semibold">About theVasePlace</p>
+    <p class="text-sm mt-10">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga soluta tempore repellendus similique esse fugit, velit nulla quas magnam impedit nesciunt! Sequi veniam optio laudantium, sint at earum aperiam esse.</p>
+    <p class="mt-10 text-gray-500 border-b border-gray-200 w-max">Find out more!</p>
   </div>
-
-  <div  class="mx-auto relative">
-    <%= image_tag("nordic-vase (5).jpg", class: "h-96 mx-auto") %>
-    <div class="w-96 flex justify-between">
-      <h1>Creature Pot</h1>
-      <p>£15</p>
-    </div>
-    <p class="text-xs text-gray-400">Decorative create flower arrangement vase</p>
-    <i class="far fa-heart absolute top-0 right-0"></i>
-  </div>
+  <%= image_tag("vase1.jpg", class:"object-cover", style:"width: 37rem; height: 35rem;") %>
+  <%= image_tag("vase2.jpg", class:"object-cover", style:"width: 37rem; height: 35rem;") %>
 </div>

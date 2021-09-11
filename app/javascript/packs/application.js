@@ -8,6 +8,7 @@ import "@fortawesome/fontawesome-free/css/all"
 import { likeButton } from "../components/likeButton"
 import { backToTop } from "../components/backToTop"
 import { carousel } from "../components/carousel"
+import { categoryScroll } from "../components/categoryScroll"
 
 Rails.start()
 Turbolinks.start()
@@ -17,6 +18,7 @@ document.addEventListener('turbolinks:load', () => {
   likeButton()
   backToTop()
   carousel()
+  categoryScroll()
 })
 
 document.addEventListener("turbolinks:before-cache", function () {

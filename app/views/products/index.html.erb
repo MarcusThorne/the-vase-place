@@ -1,0 +1,38 @@
+<div class="bg-white border-b border-gray-100 w-full flex pt-8 space-x-10 pl-10 text-sm text-gray-500 pb-5 fixed z-10"
+  id="categories" style="top: 60px; transition: top 0.4s;">
+  <p class="hover:text-black hover:scale-105 transform duration-75">Glass</p>
+  <p class="hover:text-black hover:scale-105 transform duration-75">Ceramic</p>
+  <p class="hover:text-black hover:scale-105 transform duration-75">Nordic</p>
+  <p class="hover:text-black hover:scale-105 transform duration-75">Faces</p>
+  <p class="hover:text-black hover:scale-105 transform duration-75">Statues</p>
+  <p class="hover:text-black hover:scale-105 transform duration-75">China</p>
+  <p class="hover:text-black hover:scale-105 transform duration-75">Round</p>
+  <p class="hover:text-black hover:scale-105 transform duration-75">Square</p>
+  <p class="hover:text-black hover:scale-105 transform duration-75">Oval</p>
+  <p class="hover:text-black hover:scale-105 transform duration-75">Small</p>
+  <p class="hover:text-black hover:scale-105 transform duration-75">Big</p>
+</div>
+
+<div class="mt-24 ml-10 text-gray-500 text-xs flex space-x-5">
+  <%= link_to "Home", root_path %>
+  <i class="fas fa-chevron-right text-xxs"></i>
+  <%= link_to "Browse", products_path %>
+</div>
+
+<div class="grid grid-cols-4">
+  <% @products.each do |product| %>
+    <div class="mx-5 relative w-max mx-auto my-10">
+      <%= link_to product_path(product) do %>
+        <%= image_tag("#{product.image}", class: "w-80 h-80 object-contain") %>
+        <div class="flex justify-between w-80">
+          <h1><%= product.name %></h1>
+          <p><%= product.price %></p>
+        </div>
+        <p class="text-xs text-gray-400"><%= product.description %></p>
+      <% end %>
+      <i class="far fa-heart top-0 right-0 absolute cursor-pointer" id="heart"></i>
+    </div>
+  <% end %>
+</div>
+
+<p class="px-5 py-2 rounded-3xl border border-gray-500 text-gray-700 text-sm w-max mx-auto mb-20 mt-14 hover:bg-black hover:text-white">View more</p>

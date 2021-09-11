@@ -3,7 +3,6 @@ class PagesController < ApplicationController
     @products = Product.all
   end
 
-  def browse
-    @products = Product.all
+  def admin
   end
 end

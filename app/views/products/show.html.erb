@@ -1,16 +1,9 @@
 <div class="bg-white border-b border-gray-100 w-full flex pt-8 space-x-10 pl-10 text-sm text-gray-500 pb-5 fixed z-10"
   id="categories" style="top: 60px; transition: top 0.4s;">
-  <p class="hover:text-black hover:scale-105 transform duration-75">Glass</p>
-  <p class="hover:text-black hover:scale-105 transform duration-75">Ceramic</p>
-  <p class="hover:text-black hover:scale-105 transform duration-75">Nordic</p>
-  <p class="hover:text-black hover:scale-105 transform duration-75">Faces</p>
-  <p class="hover:text-black hover:scale-105 transform duration-75">Statues</p>
-  <p class="hover:text-black hover:scale-105 transform duration-75">China</p>
-  <p class="hover:text-black hover:scale-105 transform duration-75">Round</p>
-  <p class="hover:text-black hover:scale-105 transform duration-75">Square</p>
-  <p class="hover:text-black hover:scale-105 transform duration-75">Oval</p>
-  <p class="hover:text-black hover:scale-105 transform duration-75">Small</p>
-  <p class="hover:text-black hover:scale-105 transform duration-75">Big</p>
+  <% categories = ["Glass", "Ceramic", "Nordic", "Faces", "Statues", "China", "Round", "Square"] %>
+  <% categories.each do |category| %>
+    <p class="hover:text-black hover:scale-105 transform duration-75"><%= category %></p>
+  <% end %>
 </div>
 
 <div class="mt-24 ml-10 text-gray-500 text-xs flex space-x-5">
@@ -27,7 +20,9 @@
   <div class="w-2/6 sticky top-0 pr-20 pl-10">
     <div class="flex justify-between w-full">
       <p class="text-3xl"><%= @product.name %></p>
-      <i class="far fa-heart bg-gray-100 rounded-3xl p-3" style="height: max-content;"></i>
+      <%= link_to wishlists_update_path(product: @product), remote: true do %>
+        <i id="wishlistLink" class="<%= wishlist_text %>"></i>
+      <% end %>
     </div>
     <p class="text-gray-400 text-sm"><%= @product.description %></p>
     <p class="my-10 text-xl"><%= @product.price %></p>

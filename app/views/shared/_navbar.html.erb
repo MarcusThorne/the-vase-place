@@ -17,12 +17,8 @@
 
   <%# right side %>
   <div class="flex items-end space-x-10 pr-10">
-    <%= link_to root_path do %>
-      <i class="far fa-heart text-gray-800 relative" id="navbarLikeButton">
-        <div class="py-5 bg-white w-80 shadow rounded absolute -right-5 top-10 hidden px-5" id="likedList">
-          <p class="text-gray-500 text-sm text-center mt-5">View Wishlist</p>
-        </div>
-      </i>
+    <%= link_to wishlists_path do %>
+      <i class="far fa-heart text-gray-800 relative" id="navbarLikeButton"></i>
     <% end %>
     <%= link_to root_path do %>
       <i class="fas fa-shopping-basket"></i>

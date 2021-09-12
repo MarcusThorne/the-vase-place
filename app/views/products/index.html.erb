@@ -1,19 +1,12 @@
 <div class="bg-white border-b border-gray-100 w-full flex pt-8 space-x-10 pl-10 text-sm text-gray-500 pb-5 fixed z-10"
   id="categories" style="top: 60px; transition: top 0.4s;">
-  <p class="hover:text-black hover:scale-105 transform duration-75">Glass</p>
-  <p class="hover:text-black hover:scale-105 transform duration-75">Ceramic</p>
-  <p class="hover:text-black hover:scale-105 transform duration-75">Nordic</p>
-  <p class="hover:text-black hover:scale-105 transform duration-75">Faces</p>
-  <p class="hover:text-black hover:scale-105 transform duration-75">Statues</p>
-  <p class="hover:text-black hover:scale-105 transform duration-75">China</p>
-  <p class="hover:text-black hover:scale-105 transform duration-75">Round</p>
-  <p class="hover:text-black hover:scale-105 transform duration-75">Square</p>
-  <p class="hover:text-black hover:scale-105 transform duration-75">Oval</p>
-  <p class="hover:text-black hover:scale-105 transform duration-75">Small</p>
-  <p class="hover:text-black hover:scale-105 transform duration-75">Big</p>
+  <% categories = ["Glass", "Ceramic", "Nordic", "Faces", "Statues", "China", "Round", "Square"] %>
+  <% categories.each do |category| %>
+    <p class="hover:text-black hover:scale-105 transform duration-75"><%= category %></p>
+  <% end %>
 </div>
 
-<div class="mt-24 ml-10 text-gray-500 text-xs flex space-x-5">
+<div class="mt-20 ml-10 text-gray-500 text-xs flex space-x-5">
   <%= link_to "Home", root_path %>
   <i class="fas fa-chevron-right text-xxs"></i>
   <%= link_to "Browse", products_path %>
@@ -29,8 +22,21 @@
           <p><%= product.price %></p>
         </div>
         <p class="text-xs text-gray-400"><%= product.description %></p>
+
+        <% wishlist_exists = false %>
+        <% current_user.wishlists.each do |list| %>
+          <% wishlist_exists = list.product_id == product.id %>
+          <% break if wishlist_exists == true %>
+        <% end %>
+
+        <%= link_to wishlists_update_path(product: product), remote: true do %>
+          <% if wishlist_exists %>
+            <i class="fas text-red-400 fa-heart absolute top-0 right-0" id="heart"></i>
+          <% else %>
+            <i class="far fa-heart absolute top-0 right-0" id="heart"></i>
+          <% end %>
+        <% end %>
       <% end %>
-      <i class="far fa-heart top-0 right-0 absolute cursor-pointer" id="heart"></i>
     </div>
   <% end %>
 </div>

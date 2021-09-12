@@ -6,7 +6,7 @@
   <% end %>
 </div>
 
-<div class="mt-20 ml-10 text-gray-500 text-xs flex space-x-5">
+<div class="mt-20 ml-10 text-gray-400 text-xs flex space-x-5">
   <%= link_to "Home", root_path %>
   <i class="fas fa-chevron-right text-xxs"></i>
   <%= link_to "Browse", products_path %>
@@ -24,9 +24,11 @@
         <p class="text-xs text-gray-400"><%= product.description %></p>
 
         <% wishlist_exists = false %>
-        <% current_user.wishlists.each do |list| %>
-          <% wishlist_exists = list.product_id == product.id %>
-          <% break if wishlist_exists == true %>
+        <% if user_signed_in? %>
+          <% current_user.wishlists.each do |list| %>
+            <% wishlist_exists = list.product_id == product.id %>
+            <% break if wishlist_exists == true %>
+          <% end %>
         <% end %>
 
         <%= link_to wishlists_update_path(product: product), remote: true do %>

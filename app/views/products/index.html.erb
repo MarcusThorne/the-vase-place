@@ -6,7 +6,7 @@
   <% end %>
 </div>
 
-<div class="mt-20 ml-10 text-gray-400 text-xs flex space-x-5">
+<div class="mt-24 ml-10 text-gray-500 text-xs flex space-x-5">
   <%= link_to "Home", root_path %>
   <i class="fas fa-chevron-right text-xxs"></i>
   <%= link_to "Browse", products_path %>
@@ -31,10 +31,16 @@
           <% end %>
         <% end %>
 
-        <%= link_to wishlists_update_path(product: product), remote: true do %>
-          <% if wishlist_exists %>
-            <i class="fas text-red-400 fa-heart absolute top-0 right-0" id="heart"></i>
-          <% else %>
+        <% if user_signed_in? %>
+          <%= link_to wishlists_update_path(product: product), remote: true do %>
+            <% if wishlist_exists %>
+              <i class="fas text-red-400 fa-heart absolute top-0 right-0" id="heart"></i>
+            <% else %>
+              <i class="far fa-heart absolute top-0 right-0" id="heart"></i>
+            <% end %>
+          <% end %>
+        <% else %>
+          <%= link_to new_user_session_path do %>
             <i class="far fa-heart absolute top-0 right-0" id="heart"></i>
           <% end %>
         <% end %>

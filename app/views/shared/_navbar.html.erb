@@ -7,8 +7,12 @@
     <%= link_to products_path do %>
       <h1 class="text-gray-500 hover:text-gray-800 text-sm uppercase <%= "text-gray-800 border-b border-gray-600" if current_page?(products_path) %>">Browse</h1>
     <% end %>
-    <h1 class="text-gray-500 hover:text-gray-800 text-sm uppercase">About</h1>
-    <h1 class="text-gray-500 hover:text-gray-800 text-sm uppercase">Policy</h1>
+    <%= link_to about_path do %>
+      <h1 class="text-gray-500 hover:text-gray-800 text-sm uppercase">About</h1>
+    <% end %>
+    <%= link_to policy_path do %>
+      <h1 class="text-gray-500 hover:text-gray-800 text-sm uppercase">Policy</h1>
+    <% end %>
     <div class="bg-gray-100 pb-2 pt-3 pl-5 pr-16 -mb-1 text-xs text-gray-400 rounded flex space-x-5 items-start">
       <i class="fas fa-search text-gray-900"></i>
       <p>Search for a Product</p>
@@ -24,12 +28,23 @@
       <i class="fas fa-shopping-basket"></i>
     <% end %>
     <% if user_signed_in? %>
-      <%= link_to admin_path do %>
-        <i class="fas fa-user"></i>
-      <% end %>
+      <div class="relative">
+        <%= link_to admin_path do %>
+          <i class="fas fa-user" id="accountButton"></i>
+        <% end %>
+        <div class="top-0 right-0 absolute hidden" id="accountDropdown">
+          <div class="px-10 py-3 mt-12 bg-white rounded w-max text-gray-500 text-sm">
+            <p class="mb-2">Account</p>
+            <p>Orders</p>
+            <%= link_to destroy_user_session_path, :method => :delete do %>
+              <p class="pt-2 mt-2 border-t border-gray-200">Sign Out</p>
+            <% end %>
+          </div>
+        </div>
+      </div>
     <% else %>
       <%= link_to new_user_session_path do %>
-        <i class="far fa-user relative" id="signIn"></i>
+        <i class="far fa-user" id="signIn"></i>
       <% end %>
     <% end %>
   </div>

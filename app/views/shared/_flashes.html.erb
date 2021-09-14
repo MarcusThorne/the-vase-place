@@ -1,0 +1,9 @@
+<% if notice %>
+  <div class="fixed border border-black px-5 py-2 top-20 right-20 bg-white rounded" id="notice"style="z-index: 100;">
+    <%= notice %>
+  </div>
+<% elsif alert %>
+  <div class="px-5 py-2 border border-black fixed top-20 right-20 bg-white rounded" id="alert" style="z-index: 100;">
+    <%= alert %>
+  </div>
+<% end %>

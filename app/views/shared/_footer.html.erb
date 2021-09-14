@@ -1,12 +1,58 @@
 <%# Newsletter %>
-<div class="w-full flex mt-10 px-10 py-12 space-x-20" style="background: #efe7de;">
+<div class="w-full flex mt-10 px-14 py-12 space-x-20" style="background: #efe7de;">
   <div class="w-1/2">
     <h1 class="text-2xl mb-4 font-semibold">Join our newletter.</h1>
     <p class="text-gray-600">Give us your email and we will update you with the latest products of our website and give you a heads up when we release new promotions.</p>
   </div>
 
-  <div class="flex h-10 space-x-10 my-auto w-1/2">
-    <input type="text" placeholder="Email Here" class="flex-grow bg-transparent">
+  <div class="flex h-10 space-x-5 my-auto w-1/2">
+    <input type="text" placeholder="Email here" class="flex-grow bg-transparent border-2 border-black text-center">
     <div class="bg-black text-white text-center items-center px-5 w-32 flex items-center justify-center">GO</div>
   </div>
+</div>
+
+<div class="py-20 px-20 flex justify-between">
+  <div>
+    <h1 class="text-4xl"><span class="text-sm">The</span>VaseLibrary.</h1>
+    <div class="flex text-gray-700 mt-5 text-2xl justify-end space-x-5 pl-auto">
+      <i class="fab fa-facebook-square"></i>
+      <i class="fab fa-linkedin"></i>
+    </div>
+  </div>
+
+  <div class="w-3/5 pl-20 flex justify-between">
+    <div class="text-xs text-gray-500 space-y-3">
+      <h1 class="text-sm text-black mb-10">Quick Links</h1>
+      <p><%= link_to "Browse", products_path %></p>
+      <p><%= link_to "Log In", root_path %></p>
+      <p><%= link_to "Sign Up", root_path %></p>
+      <p><%= link_to "About", about_path %></p>
+      <p><%= link_to "Policy", policy_path %></p>
+    </div>
+
+    <div class="text-xs text-gray-500 space-y-3">
+      <h1 class="text-sm text-black mb-10">About Us</h1>
+      <p><%= link_to "Who We Are", root_path %></p>
+      <p><%= link_to "What We Do", root_path %></p>
+      <p><%= link_to "Our Aim", root_path %></p>
+    </div>
+
+    <div class="text-xs text-gray-500 space-y-3">
+      <h1 class="text-sm text-black mb-10">About Us</h1>
+      <p><%= link_to "Who We Are", root_path %></p>
+      <p><%= link_to "What We Do", root_path %></p>
+      <p><%= link_to "Our Aim", root_path %></p>
+    </div>
+
+    <div class="text-xs text-gray-500 space-y-3">
+      <h1 class="text-sm text-black mb-10">About Us</h1>
+      <p><%= link_to "Who We Are", root_path %></p>
+      <p><%= link_to "What We Do", root_path %></p>
+      <p><%= link_to "Our Aim", root_path %></p>
+    </div>
+  </div>
+</div>
+
+<div class="mx-20 border-t-2 border-gray-800 flex justify-around text-xs text-gray-500 py-10">
+  <p>Copyright <i class="far fa-copyright"></i> theVaseLibrary Co</p>
 </div>

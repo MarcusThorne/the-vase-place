@@ -21,10 +21,16 @@
 
   <%# right side %>
   <div class="flex items-end space-x-10 pr-10">
-    <%= link_to wishlists_path do %>
-      <i class="far fa-heart text-gray-800 relative" id="navbarLikeButton"></i>
+    <% if user_signed_in? %>
+      <%= link_to wishlists_path do %>
+        <i class="far fa-heart text-gray-800 relative" id="navbarLikeButton"></i>
+      <% end %>
+    <% else %>
+      <%= link_to new_user_session_path do %>
+        <i class="far fa-heart text-gray-800 relative" id="navbarLikeButton"></i>
+      <% end %>
     <% end %>
-    <%= link_to root_path do %>
+    <%= link_to basket_path do %>
       <i class="fas fa-shopping-basket"></i>
     <% end %>
     <% if user_signed_in? %>

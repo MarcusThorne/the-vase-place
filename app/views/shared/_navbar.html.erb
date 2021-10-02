@@ -1,58 +1,61 @@
-<nav class="p-4 pb-5 flex justify-between w-full fixed z-50 top-0 bg-white border-b border-gray-300" id="navbar">
+<nav class="pb-4 pt-6 flex justify-between w-full fixed z-50 top-0 bg-white border-b border-gray-300" id="navbar">
+  <% page_links = [{name: "Browse", link: products_path}, {name: "About", link: about_path}, {name: "Policy", link: policy_path}] %>
+
   <%# left side %>
   <div class="flex items-end space-x-10">
+
     <%= link_to root_path do %>
       <h1 class="text-4xl font-semibold px-10 text-gray-900 -mb-1"><span class="text-xl"><i>The</i></span>VaseLibrary.</h1>
     <% end %>
-    <%= link_to products_path do %>
-      <h1 class="text-gray-500 hover:text-gray-800 text-sm uppercase <%= "text-gray-800 border-b border-gray-600" if current_page?(products_path) %>">Browse</h1>
+
+    <% page_links.each do |link| %>
+      <%= link_to link[:link] do %>
+        <h1 class="text-gray-500 hover:text-gray-800 text-sm uppercase <%= "text-gray-800 border-b border-gray-600" if current_page?(link[:link]) %>">
+          <%= link[:name] %>
+        </h1>
+      <% end %>
     <% end %>
-    <%= link_to about_path do %>
-      <h1 class="text-gray-500 hover:text-gray-800 text-sm uppercase">About</h1>
-    <% end %>
-    <%= link_to policy_path do %>
-      <h1 class="text-gray-500 hover:text-gray-800 text-sm uppercase">Policy</h1>
-    <% end %>
+
     <div class="bg-gray-100 pb-2 pt-3 pl-5 pr-16 -mb-1 text-xs text-gray-400 rounded flex space-x-5 items-start">
       <i class="fas fa-search text-gray-900"></i>
       <p>Search for a Product</p>
     </div>
+
   </div>
 
   <%# right side %>
-  <div class="flex items-end space-x-10 pr-10">
+  <div class="flex items-end pr-10">
+
     <% if user_signed_in? %>
       <%= link_to wishlists_path do %>
-        <i class="far fa-heart text-gray-800 relative" id="navbarLikeButton"></i>
+        <i class="far fa-heart text-gray-800 relative items-center mx-5" id="navbarLikeButton"></i>
       <% end %>
     <% else %>
       <%= link_to new_user_session_path do %>
-        <i class="far fa-heart text-gray-800 relative" id="navbarLikeButton"></i>
+        <i class="far fa-heart text-gray-800 relative items-center mx-5" id="navbarLikeButton"></i>
       <% end %>
     <% end %>
-    <%= link_to basket_path do %>
-      <i class="fas fa-shopping-basket"></i>
+
+    <%= link_to baskets_path do %>
+      <i class="fas fa-shopping-basket items-center mx-5"></i>
     <% end %>
+
     <% if user_signed_in? %>
-      <div class="relative">
-        <%= link_to admin_path do %>
-          <i class="fas fa-user" id="accountButton"></i>
-        <% end %>
-        <div class="top-0 right-0 absolute hidden" id="accountDropdown">
-          <div class="px-10 py-3 mt-12 bg-white rounded w-max text-gray-500 text-sm">
-            <p class="mb-2">Account</p>
-            <p>Orders</p>
-            <%= link_to destroy_user_session_path, :method => :delete do %>
-              <p class="pt-2 mt-2 border-t border-gray-200">Sign Out</p>
-            <% end %>
-          </div>
+      <div class="dropdown">
+        <i class="fas fa-user dropdown-btn items-center mx-5"></i>
+        <div class="dropdown-content">
+          <%= link_to "Manage account", edit_user_registration_path %>
+          <%= link_to "Orders", account_path %>
+          <% if current_user.admin %><%= link_to "Admin", admin_dashboard_path %><% end %>
+          <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
         </div>
       </div>
     <% else %>
       <%= link_to new_user_session_path do %>
-        <i class="far fa-user" id="signIn"></i>
+        <i class="far fa-user items-center mx-5" id="signIn"></i>
       <% end %>
     <% end %>
+
   </div>
 </nav>
 

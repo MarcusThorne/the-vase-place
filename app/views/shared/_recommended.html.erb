@@ -1,0 +1,26 @@
+<div class="border-b border-gray-100 mx-40 mt-20 mb-10"></div>
+
+<h1 class="font-semibold text-2xl ml-40">Recommended for you.</h1>
+<div class="mx-10 my-20" id="carousel">
+  <% @products.sample(8).each do |product| %>
+    <div class="flex mx-5">
+        <p><%= image_tag product.image, class:"w-full h-72 object-contain" %></p>
+        <div class="mx-10">
+          <p><%= product.name %></p>
+          <p class="text-sm text-gray-600"><%= product.description %></p>
+          <div class="flex justify-between">
+            <p><%= product.price %></p>
+              <%= form_for @basket_item, remote: true do |f| %>
+                <div class="flex space-x-2">
+                  <%= f.hidden_field :product_id, value: product.id %>
+                  <%= f.hidden_field :quantity, value: 1, class:"w-16" %>
+                  <%= button_tag type: 'submit', class: "button my-button", id: "register-button" do %>
+                    <i class="fas fa-shopping-basket" aria-hidden="true"></i>
+                  <% end %>
+                </div>
+              <% end %>
+          </div>
+      </div>
+    </div>
+  <% end %>
+</div>

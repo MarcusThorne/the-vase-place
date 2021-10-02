@@ -59,3 +59,4 @@ gem "tailwindcss-rails", "~> 0.4.3"
 gem 'devise'
 gem "jquery-rails"
 gem 'pry-byebug'
+gem 'activeadmin'

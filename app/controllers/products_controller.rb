@@ -3,11 +3,16 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.all
+    @categories = []
+    @products.each { |product| @categories << product.category }
   end
 
   def show
     @product = Product.find(params[:id])
     @wishlist_exists = Wishlist.where(product: @product, user: current_user) == [] ? false : true
-    @order_item = current_order.order_items.new
+    @basket_item = current_basket.basket_items.new
+    @categories = []
+    @products = Product.all
+    @products.each { |product| @categories << product.category }
   end
 end

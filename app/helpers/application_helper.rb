@@ -1,9 +1,9 @@
 module ApplicationHelper
-  def current_order
-    if Order.find_by_id(session[:order_id]).nil?
-      Order.new
+  def current_basket
+    if Basket.find_by_id(session[:basket_id]).nil?
+      Basket.new
     else
-      Order.find_by_id(session[:order_id])
+      Basket.find_by_id(session[:basket_id])
     end
   end
 end

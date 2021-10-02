@@ -1,14 +1,17 @@
 Rails.application.routes.draw do
-  get 'basket', to: "basket#show"
-  get 'wishlists/update'
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   devise_for :users
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: "pages#home"
-  get "admin", to: "pages#admin"
+
+  get 'basket', to: "basket#show"
   get "about", to: "pages#about"
   get "policy", to: "pages#policy"
-  resources :products
+  get "account", to: "pages#account"
+  get 'wishlists/update'
+
+  resources :products, only: [:index, :show]
   resources :wishlists
-  resources :order_items
-  resource :basket, only: [:show]
+  resources :basket_items
+  resource :baskets, only: [:show]
 end

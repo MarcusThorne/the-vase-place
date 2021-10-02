@@ -9,7 +9,6 @@ import { likeButton } from "../components/likeButton"
 import { backToTop } from "../components/backToTop"
 import { carousel } from "../components/carousel"
 import { categoryScroll } from "../components/categoryScroll"
-import { accountDropdown } from "../components/acountDropdown"
 
 Rails.start()
 Turbolinks.start()
@@ -20,7 +19,6 @@ document.addEventListener('turbolinks:load', () => {
   backToTop()
   carousel()
   categoryScroll()
-  accountDropdown()
 })
 
 document.addEventListener("turbolinks:before-cache", function () {

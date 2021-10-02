@@ -1,0 +1,49 @@
+<div class="flex ml-40 mr-10 my-20 space-x-40">
+  <div class="w-4/5">
+    <h1 class="text-xl font-bold mb-10">Shopping Bag</h1>
+
+    <% if @basket_items.nil? %>
+      <p>No Items in basket</p>
+    <% else %>
+      <% @basket_items.each do |item| %>
+        <div class="flex my-10">
+          <div class="w-40 h-30 mr-5 flex justify-center items-center"><%= image_tag item.product.image, class:"object-contain" %></div>
+          <div class="my-auto space-y-5  w-full">
+            <div class="w-full justify-between flex">
+              <h3 class="font-semibold"><%= item.product.name %></h3>
+              <div>
+                <h2 class="">Subtotal: <span class="font-semibold">£<%= item.total %></span></h2>
+              </div>
+            </div>
+
+            <div class="flex">
+              <%= form_for item, remote: true do |f| %>
+                <%= f.hidden_field :product_id, value: item.product.id %>
+                <%= f.select(:quantity, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], {}, {onchange: 'this.form.submit();', class:"border-3xl border-gray-300 w-20 rounded-3xl text-center"}) %>
+                <%= f.submit "update" %>
+                <%= link_to "Remove Item", item, method: :delete, remote: true %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="w-2/5">
+    <h1 class="font-semibold">Order Summary</h1>
+    <div class="border-b w-full my-5"></div>
+    <div class="flex justify-between">
+      <h3>Subtotal Inc VAT </h3>
+      <h3 class="font-semibold text-xl">£<%= current_basket.subtotal %></h3>
+    </div>
+
+    <div class="w-full py-10 px-2 mt-10 flex justify-between rounded" style="background: #efe7de;">
+      <p>Continue to Checkout</p>
+      <i class="fas fa-chevron-circle-right text-2xl"></i>
+    </div>
+    <div class="border-b w-full my-5"></div>
+
+
+  </div>
+</div>

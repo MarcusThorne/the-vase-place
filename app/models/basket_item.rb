@@ -1,5 +1,5 @@
-class OrderItem < ApplicationRecord
-  belongs_to :order
+class BasketItem < ApplicationRecord
+  belongs_to :basket
   belongs_to :product
   before_save :set_unit_price
   before_save :set_total

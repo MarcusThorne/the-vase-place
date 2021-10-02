@@ -1,7 +1,6 @@
 <div class="bg-white border-b border-gray-100 w-full flex pt-8 space-x-10 pl-10 text-sm text-gray-500 pb-5 fixed z-10"
   id="categories" style="top: 60px; transition: top 0.4s;">
-  <% categories = ["Glass", "Ceramic", "Nordic", "Faces", "Statues", "China", "Round", "Square"] %>
-  <% categories.each do |category| %>
+  <% @categories.each do |category| %>
     <p class="hover:text-black hover:scale-105 transform duration-75"><%= category %></p>
   <% end %>
 </div>
@@ -28,7 +27,7 @@
     <p class="my-10 text-xl"><%= @product.price %></p>
     <p class="text-xs text-gray-400 mb-2">Dispatched in 2 - 4 weeks</p>
 
-    <%= form_for @order_item, remote: true do |f| %>
+    <%= form_for @basket_item, remote: true do |f| %>
       <div class="flex space-x-2">
         <%= f.hidden_field :product_id, value: @product.id %>
         <%= f.number_field :quantity, value: 1, min: 1, class:"w-16" %>

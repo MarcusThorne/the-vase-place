@@ -1,6 +1,6 @@
 <div class="flex w-full">
   <div class="w-1/2 border-r border-gray-200 mt-10">
-    <div class="w-max mx-auto py-10">
+    <div class="w-1/2 mx-auto py-10">
       <h2 class="text-2xl font-bold">Welcome to theVasePlace.com</h2>
 
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -30,11 +30,13 @@
     </div>
   </div>
 
-  <div class="w-1/2 my-auto">
-    <div class="w-max mx-auto">
+  <div class="w-1/2 border-r border-gray-200 mt-10">
+    <div class="w-1/2 mx-auto py-10 flex flex-col justify-center h-full">
       <h2 class="mb-5">New to theVasePlace.com?</h2>
       <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-        <%= link_to "Create an Account", new_registration_path(resource_name), class:"py-2 w-full",  style:"background: #efe7de;" %><br />
+        <div class="w-full py-2 flex justify-center" style="background: #efe7de;" >
+          <%= link_to "Create an Account", new_registration_path(resource_name) %><br />
+        </div>
       <% end %>
     </div>
   </div>

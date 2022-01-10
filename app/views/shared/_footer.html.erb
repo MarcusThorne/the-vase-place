@@ -1,17 +1,14 @@
-<%# Newsletter %>
-<div class="w-full flex mt-10 px-14 py-12 space-x-20" style="background: #efe7de;">
-  <div class="w-1/2">
-    <h1 class="text-2xl mb-4 font-semibold">Join our newletter.</h1>
-    <p class="text-gray-600">Give us your email and we will update you with the latest products of our website and give you a heads up when we release new promotions.</p>
-  </div>
+<% paths = [
+  {id: 1, location: root_path, title: 'Home'},
+  {id: 2, location: products_path, title: 'Browse'},
+  {id: 3, location: about_path, title: 'About'},
+  {id: 4, location: policy_path, title: 'Policy'},
+  {id: 5, location: baskets_path, title: 'Basket'}
+]%>
+<% newsletter_paths = [1, 2, 5] %>
+<% first_section = [1, 2, 3, 4] %>
 
-  <div class="flex h-10 space-x-5 my-auto w-1/2">
-    <input type="text" placeholder="Email here" class="flex-grow bg-transparent border-2 border-black text-center">
-    <div class="bg-black text-white text-center items-center px-5 w-32 flex items-center justify-center">GO</div>
-  </div>
-</div>
-
-<div class="py-20 px-20 flex justify-between">
+<div class="py-20 mx-20 flex justify-between border-t border-gray-200">
   <div>
     <h1 class="text-4xl"><span class="text-sm">The</span>VaseLibrary.</h1>
     <div class="flex text-gray-700 mt-5 text-2xl justify-end space-x-5 pl-auto">
@@ -23,11 +20,11 @@
   <div class="w-3/5 pl-20 flex justify-between">
     <div class="text-xs text-gray-500 space-y-3">
       <h1 class="text-sm text-black mb-10">Quick Links</h1>
-      <p><%= link_to "Browse", products_path %></p>
-      <p><%= link_to "Log In", root_path %></p>
-      <p><%= link_to "Sign Up", root_path %></p>
-      <p><%= link_to "About", about_path %></p>
-      <p><%= link_to "Policy", policy_path %></p>
+      <% paths.each do |path| %>
+        <% if first_section.include?(path[:id])  %>
+          <p><%= link_to path[:title], path[:location] %></p>
+        <% end %>
+      <% end %>
     </div>
 
     <div class="text-xs text-gray-500 space-y-3">

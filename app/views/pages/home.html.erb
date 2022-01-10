@@ -24,7 +24,7 @@
         <%= image_tag("#{product.image}", class: "w-80 h-80 object-contain") %>
         <div class="flex justify-between w-80">
           <h1><%= product.name %></h1>
-          <p><%= product.price %></p>
+          <p>£ <%= product.price %></p>
         </div>
         <p class="text-xs text-gray-400"><%= product.description %></p>
         <% if user_signed_in? %>

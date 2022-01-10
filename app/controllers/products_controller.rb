@@ -5,6 +5,7 @@ class ProductsController < ApplicationController
     @products = Product.all
     @categories = []
     @products.each { |product| @categories << product.category }
+    @basket_item = current_basket.basket_items.new
   end
 
   def show

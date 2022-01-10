@@ -9,7 +9,7 @@
           <p><%= product.name %></p>
           <p class="text-sm text-gray-600"><%= product.description %></p>
           <div class="flex justify-between">
-            <p><%= product.price %></p>
+            <p>£ <%= product.price %></p>
               <%= form_for @basket_item, remote: true do |f| %>
                 <div class="flex space-x-2">
                   <%= f.hidden_field :product_id, value: product.id %>

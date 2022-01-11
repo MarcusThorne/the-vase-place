@@ -58,3 +58,4 @@ gem 'devise'
 gem "jquery-rails"
 gem 'pry-byebug'
 gem 'activeadmin'
+gem 'stripe'

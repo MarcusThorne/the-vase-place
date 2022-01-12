@@ -1,5 +1,6 @@
 class ChargesController < ApplicationController
   def new
+    @basket_items = current_basket.basket_items
   end
 
   def create
@@ -7,15 +8,15 @@ class ChargesController < ApplicationController
     @amount = 500
 
     customer = Stripe::Customer.create(
-      :email => params[:stripeEmail],
-      :source => params[:stripeToken]
+      email: params[:stripeEmail],
+      source: params[:stripeToken]
     )
 
     charge = Stripe::Charge.create(
-      :customer => customer.id,
-      :amount => @amount,
-      :description => 'Rails Stripe customer',
-      :currency => 'gbp'
+      customer: customer.id,
+      amount: @amount,
+      description: 'Rails Stripe customer',
+      currency: 'gbp'
     )
 
     rescue Stripe::CardError => e

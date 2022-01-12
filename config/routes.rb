@@ -14,5 +14,6 @@ Rails.application.routes.draw do
   resources :wishlists
   resources :basket_items
   resources :charges, only: %i[new create]
+  resources :orders, only: %i[new create edit update]
   resource :baskets, only: %i[show]
 end

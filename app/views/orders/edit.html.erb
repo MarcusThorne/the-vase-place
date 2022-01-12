@@ -1,0 +1,23 @@
+<div class="w-3/5 m-20">
+  <%= form_for @order, remote: true do |f| %>
+    <div class="flex flex-col" >
+      <%= f.label "Address" %>
+      <%= f.text_field :address, placeholder: "01 Street Lane", class: "border-gray-200 mt-2 mb-5" %>
+      <div class="w-full flex mb-5" >
+        <div class="w-1/2 flex flex-col">
+          <%= f.label "City" %>
+          <%= f.text_field :city, placeholder: "London", class: "border-gray-200 mt-2" %>
+        </div>
+        <div class="w-1/2 flex flex-col ml-4">
+          <%= f.label "Post Code" %>
+          <%= f.text_field :post_code, placeholder: "EA 123", class: "border-gray-200 mt-2" %>
+        </div>
+      </div>
+      <div class="w-1/2 flex flex-col">
+        <%= f.label "Country" %>
+        <%= f.text_field :country, placeholder: "Devon", class: "border-gray-200 mt-2" %>
+      </div>
+      <%= f.submit "Continue to Payment", class:"bg-black text-white px-20 py-2 w-max mt-10" %>
+    </div>
+  <% end %>
+</div>

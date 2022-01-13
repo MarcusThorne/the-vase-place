@@ -10,15 +10,15 @@
           <p class="text-sm text-gray-600"><%= product.description %></p>
           <div class="flex justify-between">
             <p>£ <%= product.price %></p>
-              <%= form_for @basket_item, remote: true do |f| %>
-                <div class="flex space-x-2">
-                  <%= f.hidden_field :product_id, value: product.id %>
-                  <%= f.hidden_field :quantity, value: 1, class:"w-16" %>
-                  <%= button_tag type: 'submit', class: "button my-button", id: "register-button" do %>
-                    <i class="fas fa-shopping-basket" aria-hidden="true"></i>
-                  <% end %>
-                </div>
-              <% end %>
+            <%= form_for @basket_item, remote: true do |f| %>
+              <div class="flex space-x-2">
+                <%= f.hidden_field :product_id, value: product.id %>
+                <%= f.hidden_field :quantity, value: 1, class:"w-16" %>
+                <%= button_tag type: 'submit', class: "button my-button", id: "register-button" do %>
+                  <i class="fas fa-shopping-basket" aria-hidden="true"></i>
+                <% end %>
+              </div>
+            <% end %>
           </div>
       </div>
     </div>

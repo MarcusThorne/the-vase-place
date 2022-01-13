@@ -1,44 +1,49 @@
-<nav class="pb-4 pt-6 flex justify-between w-full fixed z-50 top-0 bg-white border-b border-gray-300" id="navbar">
-  <% page_links = [{name: "Browse", link: products_path}, {name: "About", link: about_path}, {name: "Policy", link: policy_path}] %>
+<% page_links = [{name: "Browse", link: products_path}, {name: "About", link: about_path}, {name: "Policy", link: policy_path}] %>
 
+<nav class="pb-4 pt-6 flex justify-around sm:justify-between w-full fixed z-50 top-0 bg-white border-b border-gray-300" id="navbar">
   <%# left side %>
   <div class="flex items-end space-x-10">
 
     <%= link_to root_path do %>
-      <h1 class="text-4xl font-semibold px-10 text-gray-900 -mb-1"><span class="text-xl"><i>The</i></span>VaseLibrary.</h1>
+      <h1 class="text-xl sm:text-4xl font-semibold sm:px-10 text-gray-900 -mb-1"><i>The</i>VaseLibrary.</h1>
     <% end %>
 
-    <% page_links.each do |link| %>
-      <%= link_to link[:link] do %>
-        <h1 class="text-gray-500 hover:text-gray-800 text-sm uppercase <%= "text-gray-800 border-b border-gray-600" if current_page?(link[:link]) %>">
-          <%= link[:name] %>
-        </h1>
+    <div class="hidden xl:flex space-x-10" >
+      <% page_links.each do |link| %>
+        <%= link_to link[:link] do %>
+          <h1 class="text-gray-500 hover:text-gray-800 text-sm uppercase <%= "text-gray-800 border-b border-gray-600" if current_page?(link[:link]) %>">
+            <%= link[:name] %>
+          </h1>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
 
-    <div class="bg-gray-100 pb-2 pt-3 pl-5 pr-16 -mb-1 text-xs text-gray-400 rounded flex space-x-5 items-start">
-      <i class="fas fa-search text-gray-900"></i>
-      <p>Search for a Product</p>
+    <div class="hidden md:flex">
+      <div class="bg-gray-100 pb-2 pt-3 pl-5 pr-16 -mb-1 text-xs text-gray-400 rounded flex space-x-5 items-start">
+        <i class="fas fa-search text-gray-900"></i>
+        <p>Search for a Product</p>
+      </div>
     </div>
 
   </div>
 
   <%# right side %>
-  <div class="flex items-end pr-10">
+  <div class="flex items-end sm:pr-10">
+    <i class="flex fas fa-bars mx-2 sm:mx-5 items-center mb-1 xl:invisible" id="navbarToggle"></i>
 
     <% if user_signed_in? %>
       <%= link_to wishlists_path do %>
-        <i class="far fa-heart text-gray-800 relative items-center mx-5" id="navbarLikeButton"></i>
+        <i class="far fa-heart text-gray-800 relative items-center mx-2 sm:mx-5" id="navbarLikeButton"></i>
       <% end %>
     <% end %>
 
     <%= link_to baskets_path do %>
-      <i class="fas fa-shopping-basket items-center mx-5"></i>
+      <i class="fas fa-shopping-basket items-center mx-2 sm:mx-5"></i>
     <% end %>
 
     <% if user_signed_in? %>
       <div class="dropdown">
-        <i class="fas fa-user dropdown-btn items-center mx-5"></i>
+        <i class="fas fa-user dropdown-btn items-center mx-2 sm:mx-5"></i>
         <div class="dropdown-content">
           <%= link_to "Manage account", edit_user_registration_path %>
           <%= link_to "Orders", account_path %>
@@ -48,7 +53,7 @@
       </div>
     <% else %>
       <%= link_to new_user_session_path do %>
-        <i class="far fa-user items-center mx-5" id="signIn"></i>
+        <i class="far fa-user items-center mx-2 sm:mx-5" id="signIn"></i>
       <% end %>
     <% end %>
 

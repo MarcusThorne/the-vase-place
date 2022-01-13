@@ -1,0 +1,23 @@
+.card-width {
+  width: 85%;
+
+  .image-height {
+    height: 12rem;
+  }
+
+  @media(min-width: 375px) {
+    width: 15rem;
+
+    .image-height {
+      height: 14rem;
+    }
+  }
+
+  @media(min-width: 425px) {
+    width: 15rem;
+
+    .image-height {
+      height: 16rem;
+    }
+  }
+}

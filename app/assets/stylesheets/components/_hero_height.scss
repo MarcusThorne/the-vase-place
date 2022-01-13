@@ -1,0 +1,11 @@
+.responsive-height {
+  height: 60vh;
+
+  @media(min-width: 420px) {
+    height: 75vh;
+  }
+
+  @media(min-width: 720px) {
+    height: 85vh;
+  }
+}

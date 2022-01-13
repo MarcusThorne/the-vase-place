@@ -16,7 +16,7 @@
 <%# All products %>
 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 md:gap-5 md:mx-10 lg:gap-10 lg:grid-cols-4 2xl:gap-20 2xl:w-max 2xl:mx-auto">
   <% @products.each do |product| %>
-    <div class="relative w-72 md:w-full my-10" style="max-width: 20rem">
+    <div class="relative w-72 md:w-full my-10 mx-auto" style="max-width: 20rem">
       <%= link_to product_path(product) do %>
         <%= image_tag("#{product.image}", class: "w-72 md:w-full h-80 object-contain", style:"max-width: 20rem") %>
         <div class="flex justify-between mx-auto" style="max-width: 20rem">
@@ -44,7 +44,7 @@
         <% end %>
 
         <%= form_for @basket_item, remote: true do |f| %>
-          <div class="absolute top-0 -right-10">
+          <div class="absolute top-0 right-8">
             <%= f.hidden_field :product_id, value: product.id %>
             <%= f.hidden_field :quantity, value: 1, class:"w-16" %>
             <%= button_tag type: 'submit', class: "button my-button", id: "register-button" do %>

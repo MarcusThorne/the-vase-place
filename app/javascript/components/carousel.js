@@ -1,12 +1,20 @@
 const carousel = () => {
   $("#carousel").slick({
     infinite: true,
-    slidesToShow: 4,
-    slidesToScroll: 4,
+    slidesToShow: 5,
+    slidesToScroll: 5,
     arrows: true,
     nextArrow: '.next_slide',
     prevArrow: '.previous_slide',
     responsive: [
+      {
+        breakpoint: 1800,
+        settings: {
+          arrows: false,
+          slidesToShow: 4,
+          slidesToScroll: 4
+        }
+      },
       {
         breakpoint: 1280,
         settings: {

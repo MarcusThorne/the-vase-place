@@ -14,10 +14,24 @@
   }
 
   @media(min-width: 425px) {
-    width: 15rem;
-
     .image-height {
       height: 16rem;
+    }
+  }
+
+  @media(min-width: 768px) {
+    width: 17rem;
+
+    .image-height {
+      height: 18rem;
+    }
+  }
+
+  @media(min-width: 1024px) {
+    width: 19rem;
+
+    .image-height {
+      height: 20rem;
     }
   }
 }

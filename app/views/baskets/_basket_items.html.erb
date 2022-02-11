@@ -1,14 +1,14 @@
-<div class="flex ml-40 mr-10 my-20 space-x-40">
-  <div class="w-4/5">
+<div class="md:flex m-5 md:ml-40 md:mr-10 my-20 md:space-x-40">
+  <div class="md:w-4/5">
     <h1 class="text-xl font-bold mb-10">Shopping Bag</h1>
 
     <% if @basket_items.nil? %>
       <p>No Items in basket</p>
     <% else %>
       <% @basket_items.each do |item| %>
-        <div class="flex my-10">
-          <div class="w-40 h-30 mr-5 flex justify-center items-center"><%= image_tag item.product.image, class:"object-contain" %></div>
-          <div class="my-auto space-y-5  w-full">
+        <div class="md:flex my-10">
+          <div class="md:w-40 h-30 mr-5 flex justify-center items-center"><%= image_tag item.product.image, class:"object-contain" %></div>
+          <div class="my-auto space-y-5 w-full">
             <div class="w-full justify-between flex">
               <h3 class="font-semibold"><%= item.product.name %></h3>
               <div>
@@ -19,7 +19,7 @@
             <div class="flex">
               <%= form_for item, remote: true do |f| %>
                 <%= f.hidden_field :product_id, value: item.product.id %>
-                <%= f.select(:quantity, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], {}, {onchange: 'this.form.submit();', class:"border-3xl border-gray-300 w-20 rounded-3xl text-center"}) %>
+                <%= f.select(:quantity, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], {}, {onchange: 'this.form.submit();', class:"border-3xl border-gray-300 md:w-20 rounded-3xl text-center"}) %>
                 <%= f.submit "update" %>
                 <%= link_to "Remove Item", item, method: :delete, remote: true %>
               <% end %>
@@ -30,7 +30,7 @@
     <% end %>
   </div>
 
-  <div class="w-2/5">
+  <div class="m-5 md:m-0 md:w-2/5">
     <h1 class="font-semibold">Order Summary</h1>
     <div class="border-b w-full my-5"></div>
     <div class="flex justify-between">

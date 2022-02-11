@@ -4,6 +4,7 @@ AdminUser.destroy_all
 Basket.destroy_all
 puts('Wishlist Destroyed, Products Destroyed, Basket Destroyed and AdminUser Destroyed')
 
+# creating a database
 Product.create(name: 'Body', price: 15.99, image: 'body-vase (4).jpg', description: 'Decorative create flower arrangement vase')
 Product.create(name: 'Body Statue', price: 15.99, image: 'cat-vase (5).jpg', description: 'Decorative create flower arrangement vase')
 Product.create(name: 'Vase', price: 15.99, image: 'nordic-vase (5).jpg', description: 'Decorative create flower arrangement vase')

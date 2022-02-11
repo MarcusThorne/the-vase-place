@@ -4,6 +4,7 @@ class OrdersController < ApplicationController
   end
 
   def create
+    # create an order by adding your name and then link to edit to add more info to order
     @order = Order.new(order_params)
     if @order.save!
       redirect_to edit_order_path(@order.id)
@@ -13,10 +14,12 @@ class OrdersController < ApplicationController
   end
 
   def edit
+    # uses edit to add more info to same order like address then link to stripe payment
     @order = Order.find(params[:id])
   end
 
   def update
+    # update the order info edited
     @order = Order.find(params[:id])
     if @order.update(order_params)
       redirect_to new_charge_path
